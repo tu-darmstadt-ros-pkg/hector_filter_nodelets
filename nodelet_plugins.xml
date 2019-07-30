@@ -1,0 +1,7 @@
+<library path="lib/libhector_filter_nodelets">
+  <class name="hector_filter_nodelets/CloudFilterChainNodelet" type="hector_filter_nodelets::CloudFilterChainNodelet" base_class_type="nodelet::Nodelet">
+    <description>
+      Basic filter chain for sensor_msgs::PointCloud2
+    </description>
+  </class>
+</library>
