@@ -2,7 +2,7 @@
 #define HECTOR_FILTER_NODELETS_CLOUD_FILTER_CHAIN_H
 
 #include <ros/ros.h>
-#include <filters/filter_chain.h>
+#include <filters/filter_chain.hpp>
 #include <sensor_msgs/PointCloud2.h>
 
 namespace hector_filter_nodelets {
