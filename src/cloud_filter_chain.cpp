@@ -12,13 +12,15 @@ CloudFilterChain::CloudFilterChain(const ros::NodeHandle& nh, const ros::NodeHan
 
 void CloudFilterChain::cloudCb(const sensor_msgs::PointCloud2ConstPtr& cloud_msg)
 {
-  sensor_msgs::PointCloud2 cloud_out;
-  chain_.update(*cloud_msg, cloud_out);
-  if (cloud_out.data.empty()) {
+  sensor_msgs::PointCloud2Ptr cloud_out = boost::make_shared<sensor_msgs::PointCloud2>();
+  chain_.update(*cloud_msg, *cloud_out);
+
+  // Validity checks
+  if (cloud_out->data.empty()) {
     ROS_WARN_STREAM("CloudFilterChain output is empty.");
     return;
   }
-  if (cloud_out.header.frame_id.empty()) {
+  if (cloud_out->header.frame_id.empty()) {
     ROS_WARN_STREAM("CloudFilterChain output has an empty frame_id.");
     return;
   }
