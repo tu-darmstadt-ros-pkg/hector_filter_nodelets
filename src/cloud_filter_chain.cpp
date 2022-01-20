@@ -17,11 +17,11 @@ void CloudFilterChain::cloudCb(const sensor_msgs::PointCloud2ConstPtr& cloud_msg
 
   // Validity checks
   if (cloud_out->data.empty()) {
-    ROS_WARN_STREAM("CloudFilterChain output is empty.");
+    ROS_WARN_STREAM_THROTTLE(10, "CloudFilterChain output is empty. This message is throttled (10 s).");
     return;
   }
   if (cloud_out->header.frame_id.empty()) {
-    ROS_WARN_STREAM("CloudFilterChain output has an empty frame_id.");
+    ROS_WARN_STREAM_THROTTLE(10, "CloudFilterChain output has an empty frame_id. This message is throttled (10 s).");
     return;
   }
   cloud_pub_.publish(cloud_out);
